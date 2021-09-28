@@ -8,6 +8,11 @@
     }
 }
 
+.TodoItem____done {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
 .TodoItem__content {
     margin: 10px 0;
     min-height: 20px;

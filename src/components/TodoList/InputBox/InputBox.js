@@ -1,11 +1,10 @@
-
 import { KEY_RETURN } from 'keycode-js';
 import { useState } from 'react';
 import { useTodoDispatch, ADD_ITEM } from '../../../context/todo';
 
 import styles from './InputBox.module.scss';
 
-function InputBox() {
+export default function InputBox() {
     const [value, setValue] = useState('');
     const dispatch = useTodoDispatch();
 
@@ -25,5 +24,3 @@ function InputBox() {
             onKeyUp={handleKeyUp} />
     );
 }
-
-export default InputBox;
