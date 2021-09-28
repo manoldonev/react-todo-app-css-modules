@@ -1,0 +1,9 @@
+.TodoItem {
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
