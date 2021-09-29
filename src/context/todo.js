@@ -1,11 +1,15 @@
 import React, { useReducer } from "react";
 import produce from "immer";
 import { getAll, createNew } from '../services/todo';
+import { getOptions, FILTER_ALL } from "../services/filter";
 
 const TodoStateContext = React.createContext();
 const TodoDispatchContext = React.createContext();
+const filterOptions = getOptions();
+
 const ADD_ITEM = 'add-item';
 const TOGGLE_ITEM = 'toggle-item';
+const TOGGLE_FILTER = 'toggle-filter';
 
 function todoReducer(state, action) {
     switch (action.type) {
@@ -34,6 +38,16 @@ function todoReducer(state, action) {
                 itemToToggle.done = !itemToToggle.done;
             });
         }
+        case TOGGLE_FILTER: {
+            const filterValue = action.value;
+            if (!(filterValue in filterOptions)) {
+                throw new Error(`${action.type}: filter ${filterValue} not found`);
+            }
+
+            return produce(state, draft => {
+                draft.filter = filterValue;
+            });
+        }
         default: {
             throw new Error(`Unhandled action type: ${action.type}`);
         }
@@ -42,7 +56,7 @@ function todoReducer(state, action) {
 
 function TodoProvider({ children }) {
     const items = getAll();
-    const [state, dispatch] = useReducer(todoReducer, { items });
+    const [state, dispatch] = useReducer(todoReducer, { items, filter: FILTER_ALL });
 
     return (
         <TodoStateContext.Provider value={state}>
@@ -71,4 +85,11 @@ function useTodoDispatch() {
     return context;
 }
 
-export { TodoProvider, useTodoState, useTodoDispatch, ADD_ITEM, TOGGLE_ITEM };
+export {
+    TodoProvider,
+    useTodoState,
+    useTodoDispatch,
+    ADD_ITEM,
+    TOGGLE_ITEM,
+    TOGGLE_FILTER
+};

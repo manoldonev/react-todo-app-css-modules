@@ -1,0 +1,26 @@
+.Filter {
+    list-style-type: none;
+}
+
+.Filter__item {
+    display: inline;
+}
+
+.LinkButton {
+    text-transform: capitalize;
+    background-color: transparent;
+    color: inherit;
+    margin: 3px;
+    padding: 3px 7px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+
+    &:hover {
+        border-color: rgba(175, 47, 47, 0.1);
+    }
+}
+
+.LinkButton____selected {
+    border-color: rgba(175, 47, 47, 0.2);
+}
