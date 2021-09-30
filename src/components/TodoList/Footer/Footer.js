@@ -1,8 +1,10 @@
-
+import PropTypes from 'prop-types';
 import Filter from '../Filter';
+
 import styles from './Footer.module.scss';
 
-export default function Footer(props) {
+
+function Footer(props) {
     const { count, filter } = props;
 
     return (
@@ -15,3 +17,10 @@ export default function Footer(props) {
         </div>
     );
 }
+
+Footer.propTypes = {
+    count: PropTypes.number.isRequired,
+    filter: PropTypes.string.isRequired
+};
+
+export default Footer;

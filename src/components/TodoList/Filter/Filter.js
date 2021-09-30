@@ -5,8 +5,8 @@ import { getOptions as getFilterOptions } from '../../../services/filter';
 
 import styles from './Filter.module.scss';
 
-const options = getFilterOptions();
 
+const options = getFilterOptions();
 
 function Filter(props) {
     const { filter } = props;
