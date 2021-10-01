@@ -22,5 +22,7 @@
 }
 
 .LinkButton____selected {
+    @extend .LinkButton;
+
     border-color: rgba(175, 47, 47, 0.2);
 }

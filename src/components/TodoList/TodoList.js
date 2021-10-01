@@ -1,21 +1,22 @@
 import TodoItem from './TodoItem';
-import InputBox from './InputBox';
+import InputToggle from './InputToggle';
 import Footer from './Footer';
 import { useTodoState } from '../../context/todo';
-import { applyFilter } from '../../services/filter';
+import { applyFilter, search } from '../../services/filter';
 
 import styles from './TodoList.module.scss';
 
 
 export default function TodoList() {
-    const { items, filter } = useTodoState();
-    const filteredItems = applyFilter(items, filter);
+    const { items, mode, filter, query } = useTodoState();
+    const filteredItems = applyFilter(search(items, query), filter);
     const count = filteredItems.length;
 
     return (
         <section className={styles.TodoList}>
             <h1 className={styles.TodoList__header}>Things to do</h1>
-            <InputBox />
+            <InputToggle mode={mode} query={query} />
+
             <ul className={styles.TodoList__content}>
                 {filteredItems.map(item => <TodoItem key={item.id} data={item} />)}
             </ul>

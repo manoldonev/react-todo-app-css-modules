@@ -1,15 +1,19 @@
 import React, { useReducer } from "react";
 import produce from "immer";
 import { getAll, createNew } from '../services/todo';
-import { getOptions, FILTER_ALL } from "../services/filter";
+import { getOptions as getFilterOptions, FILTER_ALL } from "../services/filter";
+import { MODE_ADD, getModes as getInputModes } from "../services/mode";
 
 const TodoStateContext = React.createContext();
 const TodoDispatchContext = React.createContext();
-const filterOptions = getOptions();
+const filterOptions = getFilterOptions();
+const inputModes = getInputModes();
 
 const ADD_ITEM = 'add-item';
+const SEARCH_ITEM = 'search-item';
 const TOGGLE_ITEM = 'toggle-item';
 const TOGGLE_FILTER = 'toggle-filter';
+const TOGGLE_MODE = 'toggle-mode';
 
 function todoReducer(state, action) {
     switch (action.type) {
@@ -22,6 +26,16 @@ function todoReducer(state, action) {
             const nextId = (state.items.length + 1).toString();
             return produce(state, draft => {
                 draft.items.push(createNew({ id: nextId, text: itemText }));
+            });
+        }
+        case SEARCH_ITEM: {
+            const queryString = action.value;
+            if (queryString == null) {
+                throw new Error(`${action.type}: query not specified`);
+            }
+
+            return produce(state, draft => {
+                draft.query = queryString;
             });
         }
         case TOGGLE_ITEM: {
@@ -48,15 +62,30 @@ function todoReducer(state, action) {
                 draft.filter = filterValue;
             });
         }
+        case TOGGLE_MODE: {
+            const mode = action.value;
+            if (!inputModes.includes(mode)) {
+                throw new Error(`${action.type}: input mode ${mode} not recognized`);
+            }
+
+            return produce(state, draft => {
+                if (draft.mode !== mode) {
+                    draft.mode = mode;
+                    draft.query = '';
+                    draft.filter = FILTER_ALL;
+                }
+            });
+        }
         default: {
             throw new Error(`Unhandled action type: ${action.type}`);
         }
+
     }
 }
 
 function TodoProvider({ children }) {
     const items = getAll();
-    const [state, dispatch] = useReducer(todoReducer, { items, filter: FILTER_ALL });
+    const [state, dispatch] = useReducer(todoReducer, { items, mode: MODE_ADD, filter: FILTER_ALL, query: '' });
 
     return (
         <TodoStateContext.Provider value={state}>
@@ -90,6 +119,8 @@ export {
     useTodoState,
     useTodoDispatch,
     ADD_ITEM,
+    SEARCH_ITEM,
     TOGGLE_ITEM,
-    TOGGLE_FILTER
+    TOGGLE_FILTER,
+    TOGGLE_MODE
 };

@@ -25,9 +25,13 @@
 }
 
 .ImageButton____add {
+    @extend .ImageButton;
+
     background: url("../../../assets/add.svg") no-repeat center;
 }
 
 .ImageButton____search {
+    @extend .ImageButton;
+
     background: url("../../../assets/search.svg") no-repeat center;
 }

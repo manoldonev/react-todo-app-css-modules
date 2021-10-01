@@ -22,3 +22,12 @@ export function applyFilter(items, filter) {
 
     return [...items];
 }
+
+export function search(items, query) {
+    const queryString = query.toLowerCase();
+    if (query == null) {
+        return [...items];
+    }
+
+    return items.filter(item => item.text.toLowerCase().indexOf(queryString) !== -1);
+}

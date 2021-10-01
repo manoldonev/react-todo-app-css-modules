@@ -9,6 +9,8 @@
 }
 
 .TodoItem____done {
+    @extend .TodoItem;
+
     text-decoration: line-through;
     color: #aaa;
 }
