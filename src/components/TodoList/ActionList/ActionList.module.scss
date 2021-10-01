@@ -1,0 +1,33 @@
+.ActionList {
+    list-style-type: none;
+    border-right: 1px solid #ccc;
+    margin-right: 15px;
+    padding: 0 10px 0 0;
+}
+
+.ActionList__item {
+    display: inline;
+}
+
+.ImageButton {
+    border: 0;
+    margin: 0 5px;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s all;
+
+    &:hover {
+        opacity: 1;
+        border-color: #ddd;
+    }
+}
+
+.ImageButton____add {
+    background: url("../../../assets/add.svg") no-repeat center;
+}
+
+.ImageButton____search {
+    background: url("../../../assets/search.svg") no-repeat center;
+}

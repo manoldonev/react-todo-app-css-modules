@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import ActionList from '../ActionList';
 import Filter from '../Filter';
 
 import styles from './Footer.module.scss';
@@ -9,6 +10,7 @@ function Footer(props) {
 
     return (
         <div className={styles.Footer}>
+            <ActionList />
             <div className={styles.Footer__label}>
                 <span className={styles.Footer__counter}>{count}</span>
                 {' items left'}
