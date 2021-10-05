@@ -2,7 +2,7 @@ import produce from "immer";
 import { useCallback, useEffect, useReducer } from "react";
 
 
-const blacklistedTargets = ["INPUT", "TEXTAREA"];
+const blacklistedTargets = ["input", "textarea"];
 const ACTION_KEYDOWN = 'key-down';
 const ACTION_KEYUP = 'key-up';
 const ACTION_RESET = 'reset';

@@ -4,7 +4,7 @@ import Footer from './Footer';
 import Info from './Info';
 import { useTodoState } from '../../context/todo';
 import { applyFilter, search } from '../../services/filter';
-import useKeyboardShortcuts from './useKeyboardShortcuts';
+import useTodoKeyboardShortcuts from './useTodoKeyboardShortcuts';
 
 import styles from './TodoList.module.scss';
 
@@ -14,7 +14,7 @@ export default function TodoList() {
     const filteredItems = applyFilter(search(items, query), filter);
     const count = filteredItems.length;
 
-    useKeyboardShortcuts();
+    useTodoKeyboardShortcuts();
 
     return (
         <section className={styles.TodoList}>
