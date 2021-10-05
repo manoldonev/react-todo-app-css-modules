@@ -3,6 +3,7 @@
 
 html {
   box-sizing: border-box;
+  font-size: 62.5%; // 10px
 }
 
 *,
@@ -12,6 +13,9 @@ html {
 }
 
 body {
+  font-size: 1.6rem; // 16px default
+  background-color: #eee;
+  color: #555;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
@@ -21,4 +25,26 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+
+h1 { font-size: 2.4rem;}
+h2 { font-size: 2rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1rem; }
+
+// $screen-xxsm: 20em // 320px;
+// $screen-xsm: 30em // 480px;
+// $screen-sm: 48em // 768px;
+// $screen-md: 64em // 1024px;
+// $screen-lg: 75em // 1200px;
+// $screen-xl: 100em // 1600px;
+$screen-sm: 48em; // relative to the initial value of font-size, defined by the user agent or the user's preferences)
+@media screen and (min-width:$screen-sm){
+  h1 { font-size: 3.2rem;}
+  h2 { font-size: 2.4rem; }
+  h3 { font-size: 1.872rem; }
+  h4 { font-size: 1.6rem; }
+  h5 { font-size: 1.328rem; }
 }

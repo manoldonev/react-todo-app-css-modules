@@ -1,17 +1,17 @@
 .TodoList {
     background-color: #fff;
-    padding: 20px 20px 10px 20px;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    margin: 30px auto;
-    min-width: 320px;
-    max-width: 600px;
+    padding: 2rem 2rem 1rem 2rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.2rem;
+    margin: 3rem auto;
+    min-width: 32rem;
+    max-width: 60rem;
     position: relative;
 }
 
 .TodoList__header {
     margin: 0;
-    padding-bottom: 20px;
+    padding-bottom: 2rem;
     text-align: center;
     text-transform: uppercase;
 }

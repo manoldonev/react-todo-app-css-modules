@@ -1,19 +1,21 @@
 .ActionList {
+    flex: 0 0 auto;
     list-style-type: none;
-    border-right: 1px solid #ccc;
-    margin-right: 15px;
-    padding: 0 10px 0 0;
+    border-right: 0.1rem solid #ccc;
+    margin-right: 1.5rem;
+    padding: 0 1rem 0 0;
 }
 
 .ActionList__item {
     display: inline;
 }
 
+// TODO: responsive images
 .ImageButton {
     border: 0;
-    margin: 0 5px;
-    height: 18px;
-    width: 18px;
+    margin: 0 0.5rem;
+    height: calc(max(1.8rem, 18px));
+    width: calc(max(1.8rem, 18px));
     cursor: pointer;
     opacity: 0.6;
     transition: 0.3s all;

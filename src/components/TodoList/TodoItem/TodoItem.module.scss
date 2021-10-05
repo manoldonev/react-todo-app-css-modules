@@ -1,7 +1,7 @@
 .TodoItem {
     background: #fff;
     border: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0.1rem solid #ddd;
 
     &:last-child {
         border-bottom: none;
@@ -16,10 +16,10 @@
 }
 
 .TodoItem__content {
-    margin: 10px 0;
-    min-height: 20px;
+    margin: 1rem 0;
+    min-height: 2rem;
 }
 
 .checkbox {
-    margin-right: 4px;
+    margin-right: 0.4rem;
 }
