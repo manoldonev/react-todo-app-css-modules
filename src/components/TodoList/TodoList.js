@@ -29,7 +29,7 @@ export default function TodoList() {
 
                 <Footer count={count} filter={filter} />
             </>
-            <Info />
+            <Info mode={mode} />
         </section>
     );
 }

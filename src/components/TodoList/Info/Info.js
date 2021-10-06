@@ -1,11 +1,11 @@
-import { useTodoState } from "../../../context/todo";
-import { MODE_NONE } from "../../../services/mode";
+import PropTypes from 'prop-types';
+import { MODE_NONE, getModes } from "../../../services/mode";
 
 import styles from './Info.module.scss';
 
 
-export default function Info() {
-    const { mode } = useTodoState();
+function Info(props) {
+    const { mode } = props;
     const INFO_SHORTCUT_KEYS = 'Press `Shift + S` to search and `Shift + A` to create a new item.';
     const INFO_CANCEL_SHORTCUT_KEY = 'Press `Esc` to cancel.';
 
@@ -13,3 +13,9 @@ export default function Info() {
 
     return <p className={styles.Info}>{message}</p>;
 }
+
+Info.propTypes = {
+    mode: PropTypes.oneOf(getModes())
+}
+
+export default Info;
