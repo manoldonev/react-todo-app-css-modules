@@ -1,8 +1,10 @@
 import React, { useReducer } from "react";
 import produce from "immer";
+import PropTypes from 'prop-types';
 import { getAll, createNew } from '../services/todo';
 import { getOptions as getFilterOptions, FILTER_ALL } from "../services/filter";
 import { MODE_ADD, getModes as getInputModes } from "../services/mode";
+
 
 const TodoStateContext = React.createContext();
 const TodoDispatchContext = React.createContext();
@@ -94,6 +96,10 @@ function TodoProvider({ children }) {
             </TodoDispatchContext.Provider>
         </TodoStateContext.Provider>
     );
+}
+
+TodoProvider.propTypes = {
+    children: PropTypes.element.isRequired
 }
 
 function useTodoState() {

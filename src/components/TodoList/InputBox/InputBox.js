@@ -16,7 +16,7 @@ export default function InputBox() {
     }
 
     return (
-        <input type="text" autoFocus
+        <input type="text"
             className={styles.InputBox}
             placeholder="Add New"
             value={value}

@@ -1,7 +1,8 @@
+import { VALUE_A, VALUE_S, VALUE_ESCAPE, VALUE_SHIFT } from 'keycode-js';
 import { useTodoDispatch, TOGGLE_MODE } from "../../context/todo";
 import { MODE_ADD, MODE_SEARCH, MODE_NONE } from '../../services/mode';
 import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
-import { VALUE_A, VALUE_S, VALUE_ESCAPE, VALUE_SHIFT } from 'keycode-js';
+
 
 export default function useTodoKeyboardShortcuts() {
     const dispatch = useTodoDispatch();

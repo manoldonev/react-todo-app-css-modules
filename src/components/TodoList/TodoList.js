@@ -1,10 +1,11 @@
+
+import { useTodoState } from '../../context/todo';
+import { applyFilter, search } from '../../services/filter';
 import TodoItem from './TodoItem';
 import InputToggle from './InputToggle';
 import Header from './Header';
 import Footer from './Footer';
 import Info from './Info';
-import { useTodoState } from '../../context/todo';
-import { applyFilter, search } from '../../services/filter';
 import useTodoKeyboardShortcuts from './useTodoKeyboardShortcuts';
 
 import styles from './TodoList.module.scss';

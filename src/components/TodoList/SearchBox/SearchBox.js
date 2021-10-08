@@ -15,7 +15,7 @@ export default function SearchBox() {
     }
 
     return (
-        <input type="text" autoFocus
+        <input type="text"
             className={styles.SearchBox}
             placeholder="Search"
             value={query}

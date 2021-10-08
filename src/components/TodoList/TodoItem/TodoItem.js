@@ -10,7 +10,7 @@ function TodoItem(props) {
     const dispatch = useTodoDispatch();
     const cssClass = cn(styles.TodoItem, { [styles.TodoItem____done]: data.done });
 
-    function handleChange(e) {
+    function handleChange() {
         dispatch({ type: TOGGLE_ITEM, value: data.id });
     }
 
