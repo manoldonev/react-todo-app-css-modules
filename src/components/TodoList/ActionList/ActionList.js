@@ -17,14 +17,16 @@ export default function ActionList() {
                 <button type="button"
                     value={MODE_ADD}
                     onClick={handleClick}
-                    className={styles.ImageButton____add}>
+                    className={styles.ImageButton____add}
+                    data-testid="action-add">
                 </button>
             </li>
             <li className={styles.ActionList__item}>
                 <button type="button"
                     value={MODE_SEARCH}
                     onClick={handleClick}
-                    className={styles.ImageButton____search}>
+                    className={styles.ImageButton____search}
+                    data-testid="action-search">
                 </button>
             </li>
         </ul>

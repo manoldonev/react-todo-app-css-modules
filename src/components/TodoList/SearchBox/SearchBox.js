@@ -8,7 +8,7 @@ export default function SearchBox() {
     const dispatch = useTodoDispatch();
 
     function handleChange(e) {
-        const value = e.target.value.trim();
+        const value = e.target.value;
         if (value != null) {
             dispatch({ type: SEARCH_ITEM, value });
         }

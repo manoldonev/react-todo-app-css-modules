@@ -18,15 +18,24 @@ export default function TodoList() {
 
     useTodoKeyboardShortcuts();
 
+    let listContent;
+    if (filteredItems.length === 0) {
+        listContent = <p className={styles.TodoList__info}>There are no items.</p>;
+    } else {
+        listContent = (
+            <ul className={styles.TodoList__content} data-testid="todo-list">
+                {filteredItems.map(item => <TodoItem key={item.id} data={item} />)}
+            </ul>
+        );
+    }
+
     return (
         <section className={styles.TodoList}>
             <>
                 <Header />
                 <InputToggle mode={mode} query={query} />
 
-                <ul className={styles.TodoList__content}>
-                    {filteredItems.map(item => <TodoItem key={item.id} data={item} />)}
-                </ul>
+                {listContent}
 
                 <Footer count={count} filter={filter} />
             </>
