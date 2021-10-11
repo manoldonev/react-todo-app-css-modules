@@ -17,12 +17,11 @@
     height: calc(max(1.8rem, 18px));
     width: calc(max(1.8rem, 18px));
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 0.4;
     transition: 0.3s all;
 
-    &:hover {
+    &:hover, &____selected {
         opacity: 1;
-        border-color: #ddd;
     }
 }
 

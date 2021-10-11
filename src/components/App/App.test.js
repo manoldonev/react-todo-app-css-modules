@@ -1,8 +1,10 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { getAll } from '../../services/todo';
-import styles from '../TodoList/TodoItem/TodoItem.module.scss';
+import todoItemStyles from '../TodoList/TodoItem/TodoItem.module.scss';
+import actionListStyles from '../TodoList/ActionList/ActionList.module.scss';
 import App from './App';
+
 
 describe('TodoList', () => {
     test('renders initial state', () => {
@@ -17,9 +19,9 @@ describe('TodoList', () => {
         const listScope = within(listElement);
         const itemElements = listScope.getAllByRole('listitem');
         expect(itemElements.length).toEqual(3);
-        expect(itemElements[0].className).toContain(styles.TodoItem____done);
-        expect(itemElements[1].className).not.toContain(styles.TodoItem____done);
-        expect(itemElements[2].className).not.toContain(styles.TodoItem____done);
+        expect(itemElements[0].className).toContain(todoItemStyles.TodoItem____done);
+        expect(itemElements[1].className).not.toContain(todoItemStyles.TodoItem____done);
+        expect(itemElements[2].className).not.toContain(todoItemStyles.TodoItem____done);
 
         const itemCheckboxes = listScope.getAllByRole('checkbox');
         expect(itemCheckboxes.length).toEqual(3);
@@ -57,8 +59,14 @@ describe('TodoList', () => {
         expect(itemElements.length).toEqual(3);
     });
 
-    test('toggles mode via keyboard', () => {
+    test('toggles action mode via keyboard', () => {
         render(<App />);
+
+        const searchElement = screen.getByTestId(/action-search/i);
+        expect(searchElement).toBeInTheDocument();
+
+        const addElement = screen.getByTestId(/action-add/i);
+        expect(addElement).toBeInTheDocument();
 
         let inputElement = screen.getByRole('textbox');
         expect(inputElement).toBeInTheDocument();
@@ -67,10 +75,16 @@ describe('TodoList', () => {
         let infoElement = screen.getByText(new RegExp(escapeMessage, 'i'));
         expect(infoElement).toBeInTheDocument();
 
+        expect(addElement.className).toContain(actionListStyles.ImageButton____selected);
+        expect(searchElement.className).not.toContain(actionListStyles.ImageButton____selected);
+
         userEvent.keyboard('{escape}');
 
         inputElement = screen.queryByRole('textbox');
         expect(inputElement).toBeNull();
+
+        expect(addElement.className).not.toContain(actionListStyles.ImageButton____selected);
+        expect(searchElement.className).not.toContain(actionListStyles.ImageButton____selected);
 
         const addSearchMessage = 'Press `Shift + S` to search and `Shift + A` to create a new item'
         expect(infoElement).toHaveTextContent(addSearchMessage);
@@ -80,13 +94,19 @@ describe('TodoList', () => {
         expect(inputElement).toBeInTheDocument();
         expect(infoElement).toHaveTextContent(escapeMessage);
 
+        expect(addElement.className).not.toContain(actionListStyles.ImageButton____selected);
+        expect(searchElement.className).toContain(actionListStyles.ImageButton____selected);
+
         userEvent.keyboard('{shift}{A}');
         inputElement = screen.getByPlaceholderText(/Add new/i);
         expect(inputElement).toBeInTheDocument();
         expect(infoElement).toHaveTextContent(escapeMessage);
+
+        expect(addElement.className).toContain(actionListStyles.ImageButton____selected);
+        expect(searchElement.className).not.toContain(actionListStyles.ImageButton____selected);
     });
 
-    test('toggles mode via UI elements', () => {
+    test('toggles action mode via UI elements', () => {
         render(<App />);
 
         const searchElement = screen.getByTestId(/action-search/i);
@@ -167,14 +187,14 @@ describe('TodoList', () => {
         const itemsList = screen.getByTestId(/todo-list/i);
         const listScope = within(itemsList);
         const listItem = listScope.getAllByRole('listitem')[1];
-        expect(listItem.className).not.toContain(styles.TodoItem____done);
+        expect(listItem.className).not.toContain(todoItemStyles.TodoItem____done);
 
         userEvent.click(todoElement);
         expect(checkboxElement).toBeChecked();
-        expect(listItem.className).toContain(styles.TodoItem____done);
+        expect(listItem.className).toContain(todoItemStyles.TodoItem____done);
 
         userEvent.click(checkboxElement);
         expect(checkboxElement).not.toBeChecked();
-        expect(listItem.className).not.toContain(styles.TodoItem____done);
+        expect(listItem.className).not.toContain(todoItemStyles.TodoItem____done);
     });
 });

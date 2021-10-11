@@ -1,12 +1,14 @@
+import PropTypes from 'prop-types';
+import cn from 'classnames';
 import { useTodoDispatch, TOGGLE_MODE } from '../../../context/todo';
-import { MODE_ADD, MODE_SEARCH } from '../../../services/mode';
+import { getModes, MODE_ADD, MODE_SEARCH } from '../../../services/mode';
 
 import styles from './ActionList.module.scss';
 
 
-export default function ActionList() {
+function ActionList(props) {
+    const { mode } = props;
     const dispatch = useTodoDispatch();
-
     function handleClick(e) {
         dispatch({ type: TOGGLE_MODE, value: e.target.value });
     }
@@ -17,7 +19,8 @@ export default function ActionList() {
                 <button type="button"
                     value={MODE_ADD}
                     onClick={handleClick}
-                    className={styles.ImageButton____add}
+                    className={cn(styles.ImageButton____add,
+                        { [styles.ImageButton____selected]: mode === MODE_ADD })}
                     data-testid="action-add">
                 </button>
             </li>
@@ -25,10 +28,17 @@ export default function ActionList() {
                 <button type="button"
                     value={MODE_SEARCH}
                     onClick={handleClick}
-                    className={styles.ImageButton____search}
+                    className={cn(styles.ImageButton____search,
+                        { [styles.ImageButton____selected]: mode === MODE_SEARCH })}
                     data-testid="action-search">
                 </button>
             </li>
         </ul>
     );
 }
+
+ActionList.propTypes = {
+    mode: PropTypes.oneOf(getModes())
+};
+
+export default ActionList;

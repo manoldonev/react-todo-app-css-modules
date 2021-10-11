@@ -37,7 +37,7 @@ export default function TodoList() {
 
                 {listContent}
 
-                <Footer count={count} filter={filter} />
+                <Footer count={count} filter={filter} mode={mode} />
             </>
             <Info mode={mode} />
         </section>
