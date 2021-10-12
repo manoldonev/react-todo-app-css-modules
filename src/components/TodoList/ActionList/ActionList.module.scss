@@ -3,7 +3,7 @@
     list-style-type: none;
     border-right: 0.1rem solid #ccc;
     margin-right: 1.5rem;
-    padding: 0 1rem 0 0;
+    padding: 0;
 }
 
 .ActionList__item {
@@ -13,7 +13,8 @@
 // TODO: responsive images
 .ImageButton {
     border: 0;
-    margin: 0 0.5rem;
+    margin: 0 0.8rem 0 0;
+    padding: 0.4rem 1.5rem;
     height: calc(max(1.8rem, 18px));
     width: calc(max(1.8rem, 18px));
     cursor: pointer;

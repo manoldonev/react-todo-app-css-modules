@@ -16,7 +16,7 @@ function ActionList(props) {
     return (
         <ul className={styles.ActionList}>
             <li className={styles.ActionList__item}>
-                <button type="button"
+                <button type="button" aria-label="Create Mode"
                     value={MODE_ADD}
                     onClick={handleClick}
                     className={cn(styles.ImageButton____add,
@@ -25,7 +25,7 @@ function ActionList(props) {
                 </button>
             </li>
             <li className={styles.ActionList__item}>
-                <button type="button"
+                <button type="button" aria-label="Search Mode"
                     value={MODE_SEARCH}
                     onClick={handleClick}
                     className={cn(styles.ImageButton____search,
