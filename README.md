@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 The current state of the application can be explored at https://manoldonev.github.io/react-todo-app-css-modules.
 
 ## State Management
-State management is implemented via reducer and is based on the concepts of React Hooks and React Context.
+State management is implemented via the state reducer pattern and is based on the concepts of React Hooks and React Context.
 
 ## Styling
 The styling of the application is based on a combination of Sass, CSS modules, and a modified BEM naming convention with the following goals in mind:
