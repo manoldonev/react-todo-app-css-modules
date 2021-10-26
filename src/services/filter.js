@@ -1,22 +1,16 @@
 
-export const FILTER_ALL = 'all';
-export const FILTER_ACTIVE = 'active';
-export const FILTER_DONE = 'done';
-
-export function getOptions() {
-    return {
-        [FILTER_ALL]: FILTER_ALL,
-        [FILTER_ACTIVE]: FILTER_ACTIVE,
-        [FILTER_DONE]: FILTER_DONE
-    };
-}
+export const filterOptions = {
+    all: 'all',
+    active: 'active',
+    done: 'done'
+};
 
 export function applyFilter(items, filter) {
-    if (filter === FILTER_DONE) {
+    if (filter === filterOptions.done) {
         return items.filter(item => item.done === true);
     }
 
-    if (filter === FILTER_ACTIVE) {
+    if (filter === filterOptions.active) {
         return items.filter(item => item.done === false);
     }
 

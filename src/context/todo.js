@@ -2,13 +2,12 @@ import React, { useReducer } from "react";
 import produce from "immer";
 import PropTypes from 'prop-types';
 import { getAll, createNew } from '../services/todo';
-import { getOptions as getFilterOptions, FILTER_ALL } from "../services/filter";
+import { filterOptions } from "../services/filter";
 import { MODE_ADD, getModes as getInputModes } from "../services/mode";
 
 
 const TodoStateContext = React.createContext();
 const TodoDispatchContext = React.createContext();
-const filterOptions = getFilterOptions();
 const inputModes = getInputModes();
 
 const actionTypes = {
@@ -76,7 +75,7 @@ function todoReducer(state, action) {
                 if (draft.mode !== mode) {
                     draft.mode = mode;
                     draft.query = '';
-                    draft.filter = FILTER_ALL;
+                    draft.filter = filterOptions.all;
                 }
             });
         }
@@ -89,7 +88,7 @@ function todoReducer(state, action) {
 
 function TodoProvider({ children, reducer = todoReducer } = {}) {
     const items = getAll();
-    const [state, dispatch] = useReducer(reducer, { items, mode: MODE_ADD, filter: FILTER_ALL, query: '' });
+    const [state, dispatch] = useReducer(reducer, { items, mode: MODE_ADD, filter: filterOptions.all, query: '' });
 
     return (
         <TodoStateContext.Provider value={state}>

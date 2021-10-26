@@ -1,12 +1,10 @@
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 import { useTodoDispatch, actionTypes } from '../../../context/todo';
-import { getOptions as getFilterOptions } from '../../../services/filter';
+import { filterOptions } from '../../../services/filter';
 
 import styles from './Filter.module.scss';
 
-
-const options = getFilterOptions();
 
 function Filter(props) {
     const { filter } = props;
@@ -22,7 +20,7 @@ function Filter(props) {
 
     return (
         <ul className={styles.Filter}>
-            {Object.entries(options).map(([key, value]) => (
+            {Object.entries(filterOptions).map(([key, value]) => (
                 <li className={styles.Filter__item} key={key}>
                     <button type="button" className={computeCssClass(key)}
                         onClick={() => toggleFilter(key)}>{value}</button>
