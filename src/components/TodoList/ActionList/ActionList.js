@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { useTodoDispatch, TOGGLE_MODE } from '../../../context/todo';
+import { useTodoDispatch, actionTypes } from '../../../context/todo';
 import { getModes, MODE_ADD, MODE_SEARCH } from '../../../services/mode';
 
 import styles from './ActionList.module.scss';
@@ -10,7 +10,7 @@ function ActionList(props) {
     const { mode } = props;
     const dispatch = useTodoDispatch();
     function handleClick(e) {
-        dispatch({ type: TOGGLE_MODE, value: e.target.value });
+        dispatch({ type: actionTypes.toggleMode, value: e.target.value });
     }
 
     return (

@@ -1,4 +1,4 @@
-import { useTodoDispatch, useTodoState, SEARCH_ITEM } from '../../../context/todo';
+import { useTodoDispatch, useTodoState, actionTypes } from '../../../context/todo';
 
 import styles from './SearchBox.module.scss';
 
@@ -10,7 +10,7 @@ export default function SearchBox() {
     function handleChange(e) {
         const value = e.target.value;
         if (value != null) {
-            dispatch({ type: SEARCH_ITEM, value });
+            dispatch({ type: actionTypes.searchItem, value });
         }
     }
 

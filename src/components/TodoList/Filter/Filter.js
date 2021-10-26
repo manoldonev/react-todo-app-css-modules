@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import PropTypes from 'prop-types';
-import { useTodoDispatch, TOGGLE_FILTER } from '../../../context/todo';
+import { useTodoDispatch, actionTypes } from '../../../context/todo';
 import { getOptions as getFilterOptions } from '../../../services/filter';
 
 import styles from './Filter.module.scss';
@@ -17,7 +17,7 @@ function Filter(props) {
     }
 
     function toggleFilter(key) {
-        dispatch({ type: TOGGLE_FILTER, value: key })
+        dispatch({ type: actionTypes.toggleFilter, value: key })
     }
 
     return (

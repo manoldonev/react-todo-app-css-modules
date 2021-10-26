@@ -11,15 +11,17 @@ const TodoDispatchContext = React.createContext();
 const filterOptions = getFilterOptions();
 const inputModes = getInputModes();
 
-const ADD_ITEM = 'add-item';
-const SEARCH_ITEM = 'search-item';
-const TOGGLE_ITEM = 'toggle-item';
-const TOGGLE_FILTER = 'toggle-filter';
-const TOGGLE_MODE = 'toggle-mode';
+const actionTypes = {
+    addItem: 'ADD_ITEM',
+    searchItem: 'SEARCH_ITEM',
+    toggleItem: 'TOGGLE_ITEM',
+    toggleFilter: 'TOGGLE_FILTER',
+    toggleMode: 'TOGGLE_MODE'
+};
 
 function todoReducer(state, action) {
     switch (action.type) {
-        case ADD_ITEM: {
+        case actionTypes.addItem: {
             const itemText = action.value;
             if (itemText == null) {
                 throw new Error(`${action.type}: item text not specified`);
@@ -30,7 +32,7 @@ function todoReducer(state, action) {
                 draft.items.push(createNew({ id: nextId, text: itemText }));
             });
         }
-        case SEARCH_ITEM: {
+        case actionTypes.searchItem: {
             const queryString = action.value;
             if (queryString == null) {
                 throw new Error(`${action.type}: query not specified`);
@@ -40,7 +42,7 @@ function todoReducer(state, action) {
                 draft.query = queryString;
             });
         }
-        case TOGGLE_ITEM: {
+        case actionTypes.toggleItem: {
             const itemId = action.value;
             if (itemId == null) {
                 throw new Error(`${action.type}: item id not specified`);
@@ -54,7 +56,7 @@ function todoReducer(state, action) {
                 itemToToggle.done = !itemToToggle.done;
             });
         }
-        case TOGGLE_FILTER: {
+        case actionTypes.toggleFilter: {
             const filterValue = action.value;
             if (!(filterValue in filterOptions)) {
                 throw new Error(`${action.type}: filter ${filterValue} not found`);
@@ -64,7 +66,7 @@ function todoReducer(state, action) {
                 draft.filter = filterValue;
             });
         }
-        case TOGGLE_MODE: {
+        case actionTypes.toggleMode: {
             const mode = action.value;
             if (!inputModes.includes(mode)) {
                 throw new Error(`${action.type}: input mode ${mode} not recognized`);
@@ -85,9 +87,9 @@ function todoReducer(state, action) {
     }
 }
 
-function TodoProvider({ children }) {
+function TodoProvider({ children, reducer = todoReducer } = {}) {
     const items = getAll();
-    const [state, dispatch] = useReducer(todoReducer, { items, mode: MODE_ADD, filter: FILTER_ALL, query: '' });
+    const [state, dispatch] = useReducer(reducer, { items, mode: MODE_ADD, filter: FILTER_ALL, query: '' });
 
     return (
         <TodoStateContext.Provider value={state}>
@@ -99,7 +101,8 @@ function TodoProvider({ children }) {
 }
 
 TodoProvider.propTypes = {
-    children: PropTypes.element.isRequired
+    children: PropTypes.element.isRequired,
+    reducer: PropTypes.func
 }
 
 function useTodoState() {
@@ -124,9 +127,6 @@ export {
     TodoProvider,
     useTodoState,
     useTodoDispatch,
-    ADD_ITEM,
-    SEARCH_ITEM,
-    TOGGLE_ITEM,
-    TOGGLE_FILTER,
-    TOGGLE_MODE
+    todoReducer,
+    actionTypes
 };

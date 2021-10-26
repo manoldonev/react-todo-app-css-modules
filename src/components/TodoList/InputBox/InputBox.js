@@ -1,6 +1,6 @@
 import { KEY_RETURN } from 'keycode-js';
 import { useState } from 'react';
-import { useTodoDispatch, ADD_ITEM } from '../../../context/todo';
+import { useTodoDispatch, actionTypes } from '../../../context/todo';
 
 import styles from './InputBox.module.scss';
 
@@ -10,7 +10,7 @@ export default function InputBox() {
 
     function handleKeyUp(e) {
         if (e.keyCode === KEY_RETURN) {
-            dispatch({ type: ADD_ITEM, value: value.trim() });
+            dispatch({ type: actionTypes.addItem, value: value.trim() });
             setValue('');
         }
     }

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { useTodoDispatch, TOGGLE_ITEM } from '../../../context/todo';
+import { useTodoDispatch, actionTypes } from '../../../context/todo';
 
 import styles from './TodoItem.module.scss';
 
@@ -11,7 +11,7 @@ function TodoItem(props) {
     const cssClass = cn(styles.TodoItem, { [styles.TodoItem____done]: data.done });
 
     function handleChange() {
-        dispatch({ type: TOGGLE_ITEM, value: data.id });
+        dispatch({ type: actionTypes.toggleItem, value: data.id });
     }
 
     return (
