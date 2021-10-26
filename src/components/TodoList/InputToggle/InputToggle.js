@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import InputBox from '../InputBox';
 import SearchBox from '../SearchBox';
-import { MODE_ADD, MODE_SEARCH, getModes } from '../../../services/mode';
+import { inputModes } from '../../../services/mode';
 
 function InputToggle(props) {
     const { mode, query } = props;
-    if (mode === MODE_ADD) {
+    if (mode === inputModes.add) {
         return <InputBox />;
     }
 
-    if (mode === MODE_SEARCH) {
+    if (mode === inputModes.search) {
         return <SearchBox query={query} />;
     }
 
@@ -17,7 +17,7 @@ function InputToggle(props) {
 }
 
 InputToggle.propTypes = {
-    mode: PropTypes.oneOf(getModes()).isRequired,
+    mode: PropTypes.oneOf(Object.values(inputModes)).isRequired,
     query: PropTypes.string
 }
 

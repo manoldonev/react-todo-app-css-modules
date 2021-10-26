@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { filterOptions } from '../../../services/filter';
-import { getModes } from '../../../services/mode';
+import { inputModes } from '../../../services/mode';
 import ActionList from '../ActionList';
 import Filter from '../Filter';
 
@@ -25,7 +25,7 @@ function Footer(props) {
 Footer.propTypes = {
     count: PropTypes.number.isRequired,
     filter: PropTypes.oneOf(Object.values(filterOptions)).isRequired,
-    mode: PropTypes.oneOf(getModes()).isRequired
+    mode: PropTypes.oneOf(Object.values(inputModes)).isRequired
 };
 
 export default Footer;

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { useTodoDispatch, actionTypes } from '../../../context/todo';
-import { getModes, MODE_ADD, MODE_SEARCH } from '../../../services/mode';
+import { inputModes } from '../../../services/mode';
 
 import styles from './ActionList.module.scss';
 
@@ -17,19 +17,19 @@ function ActionList(props) {
         <ul className={styles.ActionList}>
             <li className={styles.ActionList__item}>
                 <button type="button" aria-label="Create Mode"
-                    value={MODE_ADD}
+                    value={inputModes.add}
                     onClick={handleClick}
                     className={cn(styles.ImageButton____add,
-                        { [styles.ImageButton____selected]: mode === MODE_ADD })}
+                        { [styles.ImageButton____selected]: mode === inputModes.add })}
                     data-testid="action-add">
                 </button>
             </li>
             <li className={styles.ActionList__item}>
                 <button type="button" aria-label="Search Mode"
-                    value={MODE_SEARCH}
+                    value={inputModes.search}
                     onClick={handleClick}
                     className={cn(styles.ImageButton____search,
-                        { [styles.ImageButton____selected]: mode === MODE_SEARCH })}
+                        { [styles.ImageButton____selected]: mode === inputModes.search })}
                     data-testid="action-search">
                 </button>
             </li>
@@ -38,7 +38,7 @@ function ActionList(props) {
 }
 
 ActionList.propTypes = {
-    mode: PropTypes.oneOf(getModes())
+    mode: PropTypes.oneOf(Object.values(inputModes)).isRequired
 };
 
 export default ActionList;

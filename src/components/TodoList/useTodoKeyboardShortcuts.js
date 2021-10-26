@@ -1,6 +1,6 @@
 import { VALUE_A, VALUE_S, VALUE_ESCAPE, VALUE_SHIFT } from 'keycode-js';
 import { useTodoDispatch, actionTypes } from "../../context/todo";
-import { MODE_ADD, MODE_SEARCH, MODE_NONE } from '../../services/mode';
+import { inputModes } from '../../services/mode';
 import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
 
 
@@ -10,7 +10,7 @@ export default function useTodoKeyboardShortcuts() {
     const searchModeKeys = [VALUE_SHIFT, VALUE_S];
     const noInputModeKeys = [VALUE_ESCAPE];
 
-    useKeyboardShortcut(createModeKeys, () => dispatch({ type: actionTypes.toggleMode, value: MODE_ADD }));
-    useKeyboardShortcut(searchModeKeys, () => dispatch({ type: actionTypes.toggleMode, value: MODE_SEARCH }));
-    useKeyboardShortcut(noInputModeKeys, () => dispatch({ type: actionTypes.toggleMode, value: MODE_NONE }));
+    useKeyboardShortcut(createModeKeys, () => dispatch({ type: actionTypes.toggleMode, value: inputModes.add }));
+    useKeyboardShortcut(searchModeKeys, () => dispatch({ type: actionTypes.toggleMode, value: inputModes.search }));
+    useKeyboardShortcut(noInputModeKeys, () => dispatch({ type: actionTypes.toggleMode, value: inputModes.none }));
 }

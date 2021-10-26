@@ -3,12 +3,11 @@ import produce from "immer";
 import PropTypes from 'prop-types';
 import { getAll, createNew } from '../services/todo';
 import { filterOptions } from "../services/filter";
-import { MODE_ADD, getModes as getInputModes } from "../services/mode";
+import { inputModes } from "../services/mode";
 
 
 const TodoStateContext = React.createContext();
 const TodoDispatchContext = React.createContext();
-const inputModes = getInputModes();
 
 const actionTypes = {
     addItem: 'ADD_ITEM',
@@ -66,14 +65,14 @@ function todoReducer(state, action) {
             });
         }
         case actionTypes.toggleMode: {
-            const mode = action.value;
-            if (!inputModes.includes(mode)) {
-                throw new Error(`${action.type}: input mode ${mode} not recognized`);
+            const inputMode = action.value;
+            if (!(inputMode in inputModes)) {
+                throw new Error(`${action.type}: input mode ${inputMode} not recognized`);
             }
 
             return produce(state, draft => {
-                if (draft.mode !== mode) {
-                    draft.mode = mode;
+                if (draft.mode !== inputMode) {
+                    draft.mode = inputMode;
                     draft.query = '';
                     draft.filter = filterOptions.all;
                 }
@@ -88,7 +87,7 @@ function todoReducer(state, action) {
 
 function TodoProvider({ children, reducer = todoReducer } = {}) {
     const items = getAll();
-    const [state, dispatch] = useReducer(reducer, { items, mode: MODE_ADD, filter: filterOptions.all, query: '' });
+    const [state, dispatch] = useReducer(reducer, { items, mode: inputModes.add, filter: filterOptions.all, query: '' });
 
     return (
         <TodoStateContext.Provider value={state}>
