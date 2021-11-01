@@ -19,9 +19,9 @@ describe('TodoList', () => {
         const listScope = within(listElement);
         const itemElements = listScope.getAllByRole('listitem');
         expect(itemElements.length).toEqual(3);
-        expect(itemElements[0].className).toContain(todoItemStyles.TodoItem____done);
-        expect(itemElements[1].className).not.toContain(todoItemStyles.TodoItem____done);
-        expect(itemElements[2].className).not.toContain(todoItemStyles.TodoItem____done);
+        expect(itemElements[0]).toHaveClass(todoItemStyles.TodoItem____done);
+        expect(itemElements[1]).not.toHaveClass(todoItemStyles.TodoItem____done);
+        expect(itemElements[2]).not.toHaveClass(todoItemStyles.TodoItem____done);
 
         const itemCheckboxes = listScope.getAllByRole('checkbox');
         expect(itemCheckboxes.length).toEqual(3);
@@ -72,19 +72,19 @@ describe('TodoList', () => {
         expect(inputElement).toBeInTheDocument();
 
         const escapeMessage = 'Press `Esc` to cancel.';
-        let infoElement = screen.getByText(new RegExp(escapeMessage, 'i'));
+        const infoElement = screen.getByText(new RegExp(escapeMessage, 'i'));
         expect(infoElement).toBeInTheDocument();
 
-        expect(addElement.className).toContain(actionListStyles.ImageButton____selected);
-        expect(searchElement.className).not.toContain(actionListStyles.ImageButton____selected);
+        expect(addElement).toHaveClass(actionListStyles.ImageButton____selected);
+        expect(searchElement).not.toHaveClass(actionListStyles.ImageButton____selected)
 
         userEvent.keyboard('{escape}');
 
         inputElement = screen.queryByRole('textbox');
         expect(inputElement).toBeNull();
 
-        expect(addElement.className).not.toContain(actionListStyles.ImageButton____selected);
-        expect(searchElement.className).not.toContain(actionListStyles.ImageButton____selected);
+        expect(addElement).not.toHaveClass(actionListStyles.ImageButton____selected);
+        expect(searchElement).not.toHaveClass(actionListStyles.ImageButton____selected)
 
         const addSearchMessage = 'Press `Shift + S` to search and `Shift + A` to create a new item'
         expect(infoElement).toHaveTextContent(addSearchMessage);
@@ -94,16 +94,18 @@ describe('TodoList', () => {
         expect(inputElement).toBeInTheDocument();
         expect(infoElement).toHaveTextContent(escapeMessage);
 
-        expect(addElement.className).not.toContain(actionListStyles.ImageButton____selected);
-        expect(searchElement.className).toContain(actionListStyles.ImageButton____selected);
+        expect(addElement).not.toHaveClass(actionListStyles.ImageButton____selected);
+        expect(searchElement).toHaveClass(actionListStyles.ImageButton____selected)
+
 
         userEvent.keyboard('{shift}{A}');
         inputElement = screen.getByPlaceholderText(/Add new/i);
         expect(inputElement).toBeInTheDocument();
         expect(infoElement).toHaveTextContent(escapeMessage);
 
-        expect(addElement.className).toContain(actionListStyles.ImageButton____selected);
-        expect(searchElement.className).not.toContain(actionListStyles.ImageButton____selected);
+        expect(addElement).toHaveClass(actionListStyles.ImageButton____selected);
+        expect(searchElement).not.toHaveClass(actionListStyles.ImageButton____selected)
+
     });
 
     test('toggles action mode via UI elements', () => {
@@ -116,7 +118,7 @@ describe('TodoList', () => {
         let inputElement = screen.getByPlaceholderText(/Search/i);
         expect(inputElement).toBeInTheDocument();
         const escapeMessage = 'Press `Esc` to cancel.';
-        let infoElement = screen.getByText(new RegExp(escapeMessage, 'i'));
+        const infoElement = screen.getByText(new RegExp(escapeMessage, 'i'));
         expect(infoElement).toBeInTheDocument();
 
         const addElement = screen.getByTestId(/action-add/i);
@@ -151,7 +153,7 @@ describe('TodoList', () => {
 
         userEvent.keyboard('{shift}{S}');
 
-        let inputElement = screen.getByPlaceholderText(/Search/i);
+        const inputElement = screen.getByPlaceholderText(/Search/i);
         expect(inputElement).toBeInTheDocument();
 
         userEvent.type(inputElement, 'lear');
