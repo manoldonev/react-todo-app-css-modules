@@ -5,13 +5,13 @@ export const filterOptions = {
     done: 'done'
 };
 
-export function applyFilter(items, filter) {
+export function filter(items, filter) {
     if (filter === filterOptions.done) {
-        return items.filter(item => item.done === true);
+        return items.filter(item => item.done);
     }
 
     if (filter === filterOptions.active) {
-        return items.filter(item => item.done === false);
+        return items.filter(item => !item.done);
     }
 
     return [...items];
@@ -23,5 +23,5 @@ export function search(items, query) {
         return [...items];
     }
 
-    return items.filter(item => item.text.toLowerCase().indexOf(queryString) !== -1);
+    return items.filter(item => item.text.toLowerCase().includes(queryString));
 }

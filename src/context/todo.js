@@ -31,13 +31,8 @@ function todoReducer(state, action) {
             });
         }
         case actionTypes.searchItem: {
-            const queryString = action.value;
-            if (queryString == null) {
-                throw new Error(`${action.type}: query not specified`);
-            }
-
             return produce(state, draft => {
-                draft.query = queryString;
+                draft.query = action.value;
             });
         }
         case actionTypes.toggleItem: {

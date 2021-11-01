@@ -13,10 +13,10 @@ function Footer(props) {
     return (
         <div className={styles.Footer}>
             <ActionList mode={mode} />
-            <label className={styles.Footer__label} data-testid='counter'>
-                <span className={styles.Footer__counter}>{count}</span>
+            <span className={styles.Footer__counter} data-testid="counter">
+                <span className={styles.Footer__content}>{count}</span>
                 {' items left'}
-            </label>
+            </span>
             <Filter filter={filter} />
         </div>
     );

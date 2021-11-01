@@ -1,6 +1,6 @@
 
 import { useTodoState } from '../../context/todo';
-import { applyFilter, search } from '../../services/filter';
+import { filter as applyFilter, search } from '../../services/filter';
 import TodoItem from './TodoItem';
 import InputToggle from './InputToggle';
 import Header from './Header';

@@ -8,10 +8,8 @@ export default function SearchBox() {
     const dispatch = useTodoDispatch();
 
     function handleChange(e) {
-        const value = e.target.value;
-        if (value != null) {
-            dispatch({ type: actionTypes.searchItem, value });
-        }
+        const {value} = e.target;
+        dispatch({ type: actionTypes.searchItem, value });
     }
 
     return (
