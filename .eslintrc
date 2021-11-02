@@ -8,12 +8,16 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
+        "plugin:eslint-comments/recommended",
+        "plugin:import/recommended",
+        "airbnb",
+        "airbnb/hooks",
+        "plugin:react/jsx-runtime",
         "plugin:jest/recommended",
         "plugin:testing-library/react",
-        "plugin:jsx-a11y/recommended",
-        "plugin:import/recommended"
+        "prettier",
+        // Make sure this is always the last configuration in the extends array
+        "plugin:prettier/recommended" // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors.
     ],
     "parser": "babel-eslint", // Uses babel-eslint transforms.
     "parserOptions": {
@@ -25,10 +29,8 @@
     },
     "plugins": [
         "react",
-        "react-hooks",
-        "jest",
-        "testing-library",
         "jsx-a11y",
+        "testing-library",
         "import"
     ],
     "root": true, // For configuration cascading.
@@ -53,13 +55,35 @@
         "testing-library/no-wait-for-snapshot": "error",
         "testing-library/prefer-explicit-assert": "error",
         "testing-library/prefer-presence-queries": "error",
-        "testing-library/prefer-wait-for": "error"
+        "testing-library/prefer-wait-for": "error",
         // TODO: enable when react-scripts start using eslint-plugin-testing-library v4.3.0+
         // "testing-library/no-unnecessary-act": "error",
         // "testing-library/no-wait-for-multiple-assertions": "error",
         // "testing-library/no-wait-for-side-effects": "error",
         // "testing-library/prefer-query-by-disappearance": "error",
         // "testing-library/prefer-user-event": "error",
+        "react/require-default-props": [
+            "error",
+            {
+                "ignoreFunctionalComponents": true
+            }
+        ],
+        "no-param-reassign": [
+            "error",
+            {
+                "props": true,
+                "ignorePropertyModificationsForRegex": [
+                    "^draft",
+                    "keys"
+                ]
+            }
+        ],
+        "no-use-before-define": [
+            "error",
+            {
+                "functions": false
+            }
+        ]
     },
     "settings": {
         "react": {

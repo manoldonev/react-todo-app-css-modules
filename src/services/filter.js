@@ -1,27 +1,26 @@
-
 export const filterOptions = {
-    all: 'all',
-    active: 'active',
-    done: 'done'
+  all: 'all',
+  active: 'active',
+  done: 'done',
 };
 
-export function filter(items, filter) {
-    if (filter === filterOptions.done) {
-        return items.filter(item => item.done);
-    }
+export function filter(items, filterMode) {
+  if (filterMode === filterOptions.done) {
+    return items.filter((item) => item.done);
+  }
 
-    if (filter === filterOptions.active) {
-        return items.filter(item => !item.done);
-    }
+  if (filterMode === filterOptions.active) {
+    return items.filter((item) => !item.done);
+  }
 
-    return [...items];
+  return [...items];
 }
 
 export function search(items, query) {
-    const queryString = query.toLowerCase();
-    if (query == null) {
-        return [...items];
-    }
+  const queryString = query.toLowerCase();
+  if (query == null) {
+    return [...items];
+  }
 
-    return items.filter(item => item.text.toLowerCase().includes(queryString));
+  return items.filter((item) => item.text.toLowerCase().includes(queryString));
 }
