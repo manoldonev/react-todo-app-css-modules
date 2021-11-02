@@ -20,8 +20,6 @@ The styling of the application is based on a combination of Sass, CSS modules, a
 
 ## Type Checking & Robustness
 
-Although this specific app is written in JavaScript, it utilizes the built-in React component props typechecking capabilites via the `prop-types` library.
-
 The app utilizes the built-in React component props typechecking capabilites via the `prop-types` library, and a combination of ESlint, Prettier, lint-staged, and husky to minimize run-time exceptions, ensure consistent code style and quality, and prevent noncompliant code from reaching source control in the first place.
 
 ## Testing
