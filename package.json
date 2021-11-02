@@ -32,9 +32,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js",
-    "lint:fix": "eslint --fix --ext src/**/*.js",
-    "test:related": "npm run test -- --bail --watchAll=false --findRelatedTests src/**/*.js --passWithNoTests",
+    "lint": "eslint src/**/*.{js,jsx}",
+    "lint:fix": "eslint --fix --ext src/**/*.{js,jsx}",
+    "test:related": "npm run test -- --bail --watchAll=false --findRelatedTests src/**/*.{js,jsx} --passWithNoTests",
     "prepare": "husky install"
   },
   "browserslist": {
