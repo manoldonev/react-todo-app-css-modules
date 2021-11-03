@@ -7,8 +7,8 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -17,22 +17,35 @@ body {
   background-color: #eee;
   color: #555;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+h1 {
+  font-size: 2.4rem;
+}
 
-h1 { font-size: 2.4rem;}
-h2 { font-size: 2rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.2rem; }
-h5 { font-size: 1rem; }
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
 
 // $screen-xxsm: 20em // 320px;
 // $screen-xsm: 30em // 480px;
@@ -41,10 +54,24 @@ h5 { font-size: 1rem; }
 // $screen-lg: 75em // 1200px;
 // $screen-xl: 100em // 1600px;
 $screen-sm: 48em; // relative to the initial value of font-size, defined by the user agent or the user's preferences)
-@media screen and (min-width:$screen-sm){
-  h1 { font-size: 3.2rem;}
-  h2 { font-size: 2.4rem; }
-  h3 { font-size: 1.872rem; }
-  h4 { font-size: 1.6rem; }
-  h5 { font-size: 1.328rem; }
+@media screen and (min-width: $screen-sm) {
+  h1 {
+    font-size: 3.2rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+  }
+
+  h3 {
+    font-size: 1.872rem;
+  }
+
+  h4 {
+    font-size: 1.6rem;
+  }
+
+  h5 {
+    font-size: 1.328rem;
+  }
 }

@@ -1,24 +1,24 @@
 .TodoList {
-    background-color: #fff;
-    padding: 2rem 2rem 1rem 2rem;
-    border: 0.1rem solid #ddd;
-    border-radius: 0.2rem;
-    margin: 3rem auto;
-    min-width: 32rem;
-    max-width: 60rem;
-    position: relative;
+  background-color: #fff;
+  padding: 2rem 2rem 1rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.2rem;
+  margin: 3rem auto;
+  min-width: 32rem;
+  max-width: 60rem;
+  position: relative;
 }
 
 .TodoList__content {
-    list-style-type: none;
-    padding-left: 0;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .TodoList__info {
-    margin: 1rem 0;
-    padding: 1rem;
-    border-radius: 0;
-    background: #f2f2f2;
-    border: 1px solid rgba(229, 229, 229, 0.5);
-    color: #888;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0;
+  background: #f2f2f2;
+  border: 1px solid rgba(229, 229, 229, 0.5);
+  color: #888;
 }

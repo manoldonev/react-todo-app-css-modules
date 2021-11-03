@@ -1,6 +1,7 @@
 {
-  "*.{html,css}": [
-    "prettier --write"
+  "*.{html,scss}": [
+    "prettier --write",
+    "npm run lint:scss"
   ],
   "*.{js,jsx}": [
     "prettier --write",

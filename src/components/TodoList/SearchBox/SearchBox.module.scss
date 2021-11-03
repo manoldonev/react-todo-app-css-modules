@@ -1,5 +1,5 @@
-@import "../InputBox/InputBox.module.scss";
+@import '../InputBox/InputBox.module.scss';
 
 .SearchBox {
-    @extend .InputBox;
+  @extend %InputBox;
 }

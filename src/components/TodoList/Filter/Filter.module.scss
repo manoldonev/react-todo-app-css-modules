@@ -1,30 +1,31 @@
 .Filter {
-    flex: 0 0 auto;
-    list-style-type: none;
-    padding-left: 0;
+  flex: 0 0 auto;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .Filter__item {
-    display: inline;
+  display: inline;
 }
 
-.LinkButton {
-    text-transform: capitalize;
-    background-color: transparent;
-    color: inherit;
-    margin: 0.3rem;
-    padding: 0.3rem 0.7rem;
-    text-decoration: none;
-    border: 0.1rem solid transparent;
-    border-radius: 0.3rem;
+.LinkButton,
+%LinkButton {
+  text-transform: capitalize;
+  background-color: transparent;
+  color: inherit;
+  margin: 0.3rem;
+  padding: 0.3rem 0.7rem;
+  text-decoration: none;
+  border: 0.1rem solid transparent;
+  border-radius: 0.3rem;
 
-    &:hover {
-        border-color: rgba(175, 47, 47, 0.1);
-    }
+  &:hover {
+    border-color: rgba(175, 47, 47, 0.1);
+  }
 }
 
 .LinkButton____selected {
-    @extend .LinkButton;
+  @extend %LinkButton;
 
-    border-color: rgba(175, 47, 47, 0.2);
+  border-color: rgba(175, 47, 47, 0.2);
 }

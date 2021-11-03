@@ -1,18 +1,18 @@
 .Footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    border-top: 0.1rem solid #ddd;
-    background-color: #f4fce8;
-    margin: 0 -2rem -1rem -2rem;
-    padding: 0 2rem;
-    color: #707070;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  border-top: 0.1rem solid #ddd;
+  background-color: #f4fce8;
+  margin: 0 -2rem -1rem;
+  padding: 0 2rem;
+  color: #707070;
 }
 
 .Footer__counter {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 .Footer__content {
-    font-weight: bold;
+  font-weight: bold;
 }
