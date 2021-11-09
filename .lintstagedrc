@@ -5,6 +5,7 @@
   ],
   "*.{js,jsx}": [
     "prettier --write",
-    "npm run lint:fix"
+    "npm run lint:fix",
+    "npm run test:related"
   ]
 }
