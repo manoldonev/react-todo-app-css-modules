@@ -1,22 +1,29 @@
-{ 'extends': ['stylelint-config-standard-scss', 'stylelint-config-prettier'], 'rules': {
-      'color-function-notation': 'legacy',
-      'selector-class-pattern': [
-          # Enforce modified BEM notation compatible with CSS modules:
-          # BlockComponent
-          # BlockComponent__element
-          # BlockComponent__element____modifier
-          # BlockComponent____modifier
-          # block
-          # block__element
-          # block__element____modifier
-          # block____modifier
-          '^([A-Z][a-zA-Z0-9]+|[a-z][a-z0-9]*(-[a-z0-9]+)*)((_{2}([a-z]+([A-Z][a-z0-9]+)*)))?((_{4}([a-z]+([A-Z][a-z0-9]+)*)))?$',
-          {},
-        ],
-      'font-family-name-quotes': 'always-where-recommended',
-      'alpha-value-notation': 'number',
-      'scss/percent-placeholder-pattern': '([A-Z][a-zA-Z0-9]+)',
-      'scss/at-import-partial-extension': 'always',
-      'scss/at-import-partial-extension-whitelist': ['scss'],
-      'scss/no-global-function-names': null, # bug with CSS min/max
-    } }
+# prettier-ignore
+{
+	"extends": [
+		"stylelint-config-standard-scss", 
+		"stylelint-config-prettier"
+		],
+	"rules": {
+		"color-function-notation": "legacy",
+		"selector-class-pattern": [
+			# Enforce modified BEM notation compatible with CSS modules:
+			# BlockComponent
+			# BlockComponent__element
+			# BlockComponent__element____modifier
+			# BlockComponent____modifier
+			# block
+			# block__element
+			# block__element____modifier
+			# block____modifier "^([A-Z][a-zA-Z0-9]+|[a-z][a-z0-9]*(-[a-z0-9]+)*)((_{2}([a-z]+([A-Z][a-z0-9]+)*)))?((_{4}([a-z]+([A-Z][a-z0-9]+)*)))?$",
+			{},
+		],
+		"font-family-name-quotes": "always-where-recommended",
+		"alpha-value-notation": "number",
+		"scss/percent-placeholder-pattern": "([A-Z][a-zA-Z0-9]+)",
+		"scss/at-import-partial-extension": "always",
+		"scss/at-import-partial-extension-whitelist": ["scss"],
+		"scss/no-global-function-names": null,
+		# bug with CSS min / max
+	}
+}

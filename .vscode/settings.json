@@ -2,7 +2,6 @@
     "editor.formatOnSave": true,
     "files.eol": "\n",
     "editor.tabSize": 2,
-    "prettier.configPath": ".prettierrc",
-    "scss.validate": false,
-    "stylelint.configFile": ".stylelintrc"
+    "scss.lint.unknownAtRules": "ignore",
+    "scss.validate": false
 }
