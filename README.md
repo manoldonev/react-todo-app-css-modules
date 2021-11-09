@@ -1,3 +1,5 @@
+![ci workflow](https://github.com/manoldonev/react-todo-app-css-modules/actions/workflows/main.yml/badge.svg)
+
 # Getting Started with React Todo App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and represents a simple JavaScript todo web app implemented with React.
