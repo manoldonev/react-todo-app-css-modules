@@ -39,7 +39,8 @@
     "lint:fix": "eslint --fix --ext src/**/*.{js,jsx}",
     "lint:scss": "stylelint src/**/*.scss",
     "test:related": "npm run test -- --bail --watchAll=false --findRelatedTests src/**/*.{js,jsx} --passWithNoTests",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prettier": "prettier --check src"
   },
   "browserslist": {
     "production": [
